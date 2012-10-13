@@ -175,3 +175,15 @@ class TestStdlibInterface(StdlibTestMixin, XTracebackTestCase):
         with self.compat:
             exc_str = self._get_print_exc_str()
         self.assertEqual(stdlib_exc_str, exc_str)
+
+    def test_print_stack(self):
+        self.assertTrue(hasattr(self.compat, "print_stack"))
+
+    def test_format_stack(self):
+        self.assertTrue(hasattr(self.compat, "format_stack"))
+
+    def test_extract_stack(self):
+        self.assertTrue(hasattr(self.compat, "extract_stack"))
+
+    def test_extract_tb(self):
+        self.assertTrue(hasattr(self.compat, "extract_tb"))
