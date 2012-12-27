@@ -56,9 +56,12 @@ class NoseXTraceback(Plugin):
         # analysis
         import xtraceback
         options = dict(color=self.xtraceback_color,
-                       stream=self.conf.stream,
                        show_globals=self.xtraceback_globals,
                        globals_module_include=self.xtraceback_globals_include)
+
+        if hasattr(self.conf, "stream"):
+            options["stream"] = self.conf.stream
+
         xtraceback.compat.defaults.update(**options)
         xtraceback.compat.install()
 
